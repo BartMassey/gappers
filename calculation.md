@@ -39,7 +39,7 @@ player hand held until the river is calculated as follows:
   
 It is interesting that the numbers calculated here differ
 slightly from reports in the literature. 6.5% is commonly
-reported, but 6.4% or 6.7% are more accurate estimates,
+reported, but 6.4% or 6.6% are more accurate estimates,
 depending on whether irrelevant flushes are counted. This
 could be a bug in these calculations, but it seems unlikely.
 
