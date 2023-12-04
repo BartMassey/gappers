@@ -3,8 +3,9 @@ Bart Massey 2023
 
 This simulation and calculation is a response to
 <https://www.replaypoker.com/blog/betting-on-suited-connectors-by-jengen7/>.
-The code was written by GitHub Copilot, with a bit of
-guidance by me. The calculation is entirely my own.
+The code — in Python and Rust — was written by GitHub
+Copilot, with a bit of guidance by me. The calculation is
+entirely my own.
 
 # License
 
