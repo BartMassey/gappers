@@ -6,8 +6,8 @@ suits = ['hearts', 'diamonds', 'clubs', 'spades']
 ranks = list(range(2, 15))  # 2-10, Jack=11, Queen=12, King=13, Ace=14
 deck = [(rank, suit) for suit in suits for rank in ranks]
 
-def is_flush(hand):
-    suit_counts = Counter(suit for rank, suit in hand)
+def is_flush(hand, player_suit):
+    suit_counts = Counter(suit for rank, suit in hand if suit == player_suit)
     return max(suit_counts.values()) >= 5
 
 def is_gapper(hand):
@@ -29,9 +29,9 @@ def simulate_hand(hand_type):
         player_hand = [(rank, suit) for rank in random.sample(ranks, 2)]
     community_cards = [card for card in deck if card not in player_hand][:5]
     all_cards = player_hand + community_cards
-    return is_flush(all_cards)
+    return is_flush(all_cards, suit)
 
-def estimate_probabilities(n=10000):
+def estimate_probabilities(n=1_000_000):
     gapper_flush_counts = 0
     suited_flush_counts = 0
     for _ in range(n):

@@ -1,9 +1,10 @@
 # gappers: simulation of "suited-gapper" flush probabilities
 Bart Massey 2023
 
-This code is a response to
-<https://www.replaypoker.com/blog/betting-on-suited-connectors-by-jengen7/>. It
-was written by GitHub Copilot, with a bit of guidance by me.
+This simulation and calculation is a response to
+<https://www.replaypoker.com/blog/betting-on-suited-connectors-by-jengen7/>.
+The code was written by GitHub Copilot, with a bit of
+guidance by me. The calculation is entirely my own.
 
 # License
 
