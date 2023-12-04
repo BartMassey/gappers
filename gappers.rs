@@ -31,14 +31,14 @@ enum HandType {
     Suited,
 }
 
-fn is_flush(hand: &Vec<(Rank, Suit)>, suit: &Suit) -> bool {
+fn is_flush(hand: &[(Rank, Suit)], suit: &Suit) -> bool {
     hand.iter().filter(|&card| card.1 == *suit).count() >= 5
 }
 
 fn simulate_hand(hand_type: HandType) -> bool {
     let mut rng = rand::thread_rng();
-    let suits = vec![Suit::Hearts, Suit::Diamonds, Suit::Clubs, Suit::Spades];
-    let ranks: Vec<Rank> = vec![
+    let suits = [Suit::Hearts, Suit::Diamonds, Suit::Clubs, Suit::Spades];
+    let ranks = [
         Rank::Two,
         Rank::Three,
         Rank::Four,
@@ -59,20 +59,19 @@ fn simulate_hand(hand_type: HandType) -> bool {
         .collect();
     deck.shuffle(&mut rng);
     let suit = suits.choose(&mut rng).unwrap();
-    let player_hand;
-    match hand_type {
+    let player_hand = match hand_type {
         HandType::Gapper => {
             let middle_rank_index = rng.gen_range(1..ranks.len() - 1);
-            player_hand = vec![
+            vec![
                 (ranks[middle_rank_index - 1], *suit),
                 (ranks[middle_rank_index + 1], *suit),
-            ];
+            ]
         }
         HandType::Suited => {
             let player_ranks: Vec<Rank> = ranks.choose_multiple(&mut rng, 2).cloned().collect();
-            player_hand = player_ranks.into_iter().map(|rank| (rank, *suit)).collect();
+            player_ranks.into_iter().map(|rank| (rank, *suit)).collect()
         }
-    }
+    };
     let community_cards: Vec<(Rank, Suit)> = deck
         .into_iter()
         .filter(|card| !player_hand.contains(card))
