@@ -6,8 +6,8 @@ suits = ['hearts', 'diamonds', 'clubs', 'spades']
 ranks = list(range(2, 15))  # 2-10, Jack=11, Queen=12, King=13, Ace=14
 deck = [(rank, suit) for suit in suits for rank in ranks]
 
-def is_flush(hand, player_suit):
-    suit_counts = Counter(suit for rank, suit in hand if suit == player_suit)
+def is_flush(hand, suit):
+    suit_counts = Counter(card_suit for rank, card_suit in hand if card_suit == suit)
     return max(suit_counts.values()) >= 5
 
 def is_gapper(hand):
